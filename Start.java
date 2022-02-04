@@ -9,23 +9,28 @@ public class Start {
 	public static final int EMP_WAGE_PER_HRS = 20;
 
 	public static void main(String[] args) {
-		int check=Utility.empCheck();	
-		if(check == IS_FULL_TIME) {
-			int empHrs=8;
-			int empWage = empHrs * EMP_WAGE_PER_HRS; 
-			System.out.println("Employee Wage = " + empWage);
+		int check=Utility.empCheck();
+		switch(check) {
+			case IS_FULL_TIME : {
+				int empHrs=8;
+				int empWage = empHrs * EMP_WAGE_PER_HRS; 
+				System.out.println("Employee Wage = " + empWage);
+				break;
+			}
+			
+			case  IS_PART_TIME :{
+				int empHrs=4;
+				int empWage = empHrs * EMP_WAGE_PER_HRS; 
+				System.out.println("Employee Wage = " + empWage);
+				break;
+			}
+			
+			default : {
+				System.out.println("Employee is Absent");
+			}
+		
 		}
 		
-		else if(check == IS_PART_TIME) {
-			int empHrs=4;
-			int empWage = empHrs * EMP_WAGE_PER_HRS; 
-			System.out.println("Employee Wage = " + empWage);
-		}
-		
-		else {
-			System.out.println("Employee is Absent");
-		}
-
 	}
 
 }
