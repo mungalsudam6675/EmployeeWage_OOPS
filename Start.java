@@ -5,6 +5,7 @@ import Com.OOPS.Utility.Utility;
 public class Start {
 	
 	public static final int IS_FULL_TIME = 1;
+	public static final int IS_PART_TIME = 2;
 	public static final int EMP_WAGE_PER_HRS = 20;
 
 	public static void main(String[] args) {
@@ -14,6 +15,13 @@ public class Start {
 			int empWage = empHrs * EMP_WAGE_PER_HRS; 
 			System.out.println("Employee Wage = " + empWage);
 		}
+		
+		else if(check == IS_PART_TIME) {
+			int empHrs=4;
+			int empWage = empHrs * EMP_WAGE_PER_HRS; 
+			System.out.println("Employee Wage = " + empWage);
+		}
+		
 		else {
 			System.out.println("Employee is Absent");
 		}
