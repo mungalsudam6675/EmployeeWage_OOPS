@@ -2,6 +2,7 @@ package EmpWage_OOPS;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+
 import java.util.Map;
 
 import Com.OOPS.Utility.Utility;
@@ -11,6 +12,7 @@ public class EmpWageBuilder implements IComputeEmpWage {
 	public static final int IS_FULL_TIME = 1;
 	public static final int IS_PART_TIME = 2;
 
+	private int company = 0;
 	private LinkedList<CompanyEmpWage> companyEmpWageList;
 	private Map<String, CompanyEmpWage> companyToEmpWageMap;
 
@@ -28,12 +30,16 @@ public class EmpWageBuilder implements IComputeEmpWage {
 	}
 
 	public void computeEmpWage() {
-
 		for (int i = 0; i < companyEmpWageList.size(); i++) {
 			CompanyEmpWage companyEmpWage = companyEmpWageList.get(i);
 			companyEmpWage.setTotalEmpWage(this.computeEmpWage(companyEmpWage));
 			System.out.println(companyEmpWage);
 		}
+	}
+
+	@Override
+	public int getTotalWage(String company) {
+		return companyToEmpWageMap.get(company).totalEmpWage;
 	}
 
 	public int computeEmpWage(CompanyEmpWage companyEmpWage) {
@@ -69,20 +75,16 @@ public class EmpWageBuilder implements IComputeEmpWage {
 
 	}
 
-	@Override
-	public int getTotalWage(String company) {
-		return companyToEmpWageMap.get(company).totalEmpWage;
-	}
-
 	public static void main(String[] args) {
 
 		IComputeEmpWage empWageBuilder = new EmpWageBuilder();
-		empWageBuilder.addCompanyEmpWage("DMart", 40, 4, 20);
+		empWageBuilder.addCompanyEmpWage("DMart", 40, 8, 20);
 		empWageBuilder.addCompanyEmpWage("Reliance", 10, 4, 20);
 		empWageBuilder.computeEmpWage();
 
+	
 	}
 
 	
-
 }
+
